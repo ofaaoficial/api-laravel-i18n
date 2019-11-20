@@ -64,28 +64,4 @@ class PostsController extends Controller
         if(!$request->isJson()) return response()->json(['message' => 'Tipo de dato incorrecto.'], 406);
         return response()->json(Post::find($id), 200);
     }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
