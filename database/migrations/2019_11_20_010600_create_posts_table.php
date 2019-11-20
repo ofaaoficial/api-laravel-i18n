@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             //Campos que no serán traducidos.
             $table->string('slug');
 
-
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

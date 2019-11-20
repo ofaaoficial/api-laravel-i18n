@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "66d1f8e7-6139-49b4-a44b-7629fc2f2c9c",
+		"name": "api-laravel-i18n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "ALL Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api-laravel-i18n/public/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api-laravel-i18n",
+								"public",
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_id\" : 1,\n\t\"translations\": [\n\t\t{\n\t\t\t\"locale\": \"es\",\n\t\t\t\"title\": \"Hola mundo!\",\n\t\t\t\"description\": \"Descripcion del primer hola mundo!\"\n\t\t},\n\t\t{\n\t\t\t\"locale\": \"en\",\n\t\t\t\"title\": \"Hello world!\",\n\t\t\t\"description\": \"Description of the first hello world!\"\n\t\t}\t\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost/api-laravel-i18n/public/api/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api-laravel-i18n",
+								"public",
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/api-laravel-i18n/public/api/posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api-laravel-i18n",
+								"public",
+								"api",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
