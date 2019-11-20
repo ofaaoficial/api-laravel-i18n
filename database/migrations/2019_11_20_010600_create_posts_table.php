@@ -28,20 +28,22 @@ class CreatePostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('posts_translations', function(Blueprint $table){
+        Schema::create('post_translations', function(Blueprint $table){
             //Campos básicos para generar traducciones.
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('post_id');
             $table->string('locale');
 
             //Estos son los campos traducibles.
             $table->string('title');
             $table->string('description');
 
-            $table->foreign('project_id')
+            $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
                 ->onDelete('cascade');
+
+            $table->unique(['post_id', 'locale']);
         });
     }
 
