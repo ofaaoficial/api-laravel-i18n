@@ -2,10 +2,12 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
-    use \Astrotomic\Translatable\Translatable;
+    use \Astrotomic\Translatable\Translatable,
+        Sluggable;
 
     protected $table = 'posts';
 
@@ -18,4 +20,12 @@ class Post extends Model
         'title',
         'description'
     ];
+
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }
