@@ -39,7 +39,6 @@ class PostsController extends Controller
 
         $dataToBeSaved = [
             'user_id' => $data['user_id'],
-            'slug' => 'automatic'
         ];
 
         foreach($translations as $translation){
@@ -60,9 +59,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        if(!$request->isJson()) return response()->json(['message' => 'Tipo de dato incorrecto.'], 406);
+        return response()->json(Post::find($id), 200);
     }
 
 

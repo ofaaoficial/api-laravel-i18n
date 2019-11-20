@@ -28,4 +28,14 @@ class Post extends Model
             ]
         ];
     }
+
+    /**
+     * Route model binding
+     * Como acceder de manera automatica.
+     */
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
