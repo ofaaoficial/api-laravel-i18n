@@ -12,7 +12,13 @@
 					"name": "ALL Posts",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost/api-laravel-i18n/public/api/posts",
 							"protocol": "http",

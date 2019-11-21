@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //End-points
-Route::apiResource('posts', 'PostsController');
+Route::middleware('RequestIsTypeJson')->group(function(){
+    Route::apiResource('posts', 'PostsController');
+});
+

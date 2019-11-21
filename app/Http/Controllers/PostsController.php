@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\User;
+use Validator;
 
 class PostsController extends Controller
 {
@@ -13,9 +13,8 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if(!$request->isJson()) return response()->json(['message' => 'Tipo de dato incorrecto.'], 406);
         return response()->json(Post::all(), 200);
     }
 
@@ -27,13 +26,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        if(!$request->isJson()) return response()->json(['message' => 'Tipo de dato incorrecto.'], 406);
-
         $data = $request->json()->all();
 
-        $userExists = User::where('id', $data['user_id'])->exists();
+        $validator = Validator::make($data, [
+            'user_id' => 'required|exists:users,id'
+        ]);
 
-        if(!$userExists) return response()->json(['error' => 'El usuario no existe.'], 406);
+        if($validator->fails()) return response()->json($validator->errors(), 406);
 
         $translations = $data['translations'];
 
@@ -50,7 +49,7 @@ class PostsController extends Controller
 
         $post = Post::create($dataToBeSaved);
 
-        return response()->json($post);
+        return response()->json($post, 201);
     }
 
     /**
@@ -59,9 +58,8 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, Request $request)
+    public function show($id)
     {
-        if(!$request->isJson()) return response()->json(['message' => 'Tipo de dato incorrecto.'], 406);
         return response()->json(Post::find($id), 200);
     }
 }
